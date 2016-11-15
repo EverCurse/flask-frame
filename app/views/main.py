@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint, render_template
 main = Blueprint('main', __name__)
-from app.models import Users
+from app.models.models import Users
 from flask_login import login_required
 
 

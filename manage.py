@@ -3,7 +3,7 @@
 
 from flask_script import Manager, Shell
 from app import create_app
-from app.models import Users
+from app.models.models import Users
 from app.extensions import db
 app = create_app()
 manage = Manager(app)
