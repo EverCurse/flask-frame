@@ -1,0 +1,35 @@
+{% extends 'demo.html' %}
+{% block body %}
+{% block extracss %}
+<style type="text/css">
+    div{border: 1px #000000 solid}
+</style>
+{% endblock %}
+<div class="container-fluid">
+    <!--栅格系统class为container-fluid固定宽度的栅格布局  就可以将固定宽度的栅格布局转换为 100% 宽度的布局。-->
+    <div class="row">
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+    </div>
+    <div class="row">
+        <!--中等屏幕第一个占8个格，第二个占4个格。小屏幕，上下平分12个格-->
+        <div class="col-md-8 col-sm-6">col-md-8</div>
+        <div class="col-md-4 col-sm-6">col-md-4</div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">cntainer</div>
+    </div>
+</div>
+{% endblock %}

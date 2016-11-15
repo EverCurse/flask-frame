@@ -1,0 +1,34 @@
+{% extends 'demo.html' %}
+{% block body %}
+{% block extracss %}
+<style type="text/css">
+    div{border: 1px #000000 solid}
+    /*下面是媒体查询，当宽度小于767，那么背景颜色变颜色 */
+    @media(max-width: 767px) {
+        div{background: #449d44}
+    }
+</style>
+{% endblock %}
+<div class="container">
+    <!--栅格系统class为container固定宽度的栅格布局-->
+    <div class="row">
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+        <div class="col-md-1">col-md-1</div>
+    </div>
+    <div class="row">
+        <!--中等屏幕第一个占8个格，第二个占4个格。小屏幕，上下平分12个格-->
+        <div class="col-md-8 col-sm-6">col-md-8</div>
+        <div class="col-md-4 col-sm-6">col-md-4</div>
+    </div>
+</div>
+{% endblock %}

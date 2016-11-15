@@ -1,0 +1,39 @@
+{% extends 'demo.html' %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="{{ url_for('static',filename='img/1.jpg') }}" class="img-responsive">
+        </div>
+        <div class="col-sm-8">
+            <a href="#">link</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p class="lead text-capitalize"><h1>Bootstrap中文网<small>second info</small></h1></p>
+            <p class="lead text-success">
+                Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
+
+Cum sociis natoque <abbr title="nginx by Rus">NGX</abbr>  et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
+
+                <del>Maecenas sed diam eget risus</del> varius blandit sit amet non <mark>magna</mark>. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+            </p>
+            <address>
+                <strong>Kylin Sun,Inc.</strong><br>
+                U.S.A 795 AVE Street<br>
+                P:(15680805151)
+                <a href="mailto:#">anthony931118@gmail.com</a>
+            </address>
+
+            <blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            </blockquote>
+            <hr>
+            Python代码示例：<code>[i for i in range(100) if i % 3 ==0]</code>,在编译器里面按<kbd>Ctrl+s</kbd>保存
+            程序结果：<samp>[0,3,6,9.....]</samp>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

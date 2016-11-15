@@ -1,0 +1,15 @@
+{% extends 'demo.html' %}
+{% block body %}
+
+
+{% endblock %}
+{% block extrajs %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#bt1').on('click',function () {
+        $('#d1').removeClass().addClass('has-error')
+    });
+    })
+
+</script>
+{%endblock%}

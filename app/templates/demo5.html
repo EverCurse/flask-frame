@@ -1,0 +1,48 @@
+{% extends 'demo.html' %}
+{% block body %}
+<div class="container" style="margin-top: 200px">
+    <form action="#" method="get" class="form-horizontal">
+        <fieldset>
+            <legend>Login</legend>
+            <div class="form-group"><!--设置上下15像素-->
+                <label for="uname">Account</label>
+                <input type="text" id="uname" name="name" placeholder="a" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="uname">Password</label>
+                <input type="password" id="passwd" name="passwd" placeholder="p" class="form-control">
+            </div>
+
+            <div class="checkbox">
+                <label><input type="checkbox" id="rem" name="rem">Keep me</label>
+           </div>
+
+           <button type="submit" class="btn btn-default">Login</button>
+        </fieldset>
+    </form>
+    <div class="has-success has-feedback" id="d1">
+        <label class="control-label">
+        Text info
+        </label>
+        <input type="text" class="form-control">
+        <button type="button" class="btn btn-danger" id="bt1">chage color</button>
+        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+    </div>
+    <button type="button" class="btn btn-default" id="b-nice"><span class="glyphicon glyphicon-star" id="nice">Star</span></button>
+</div>
+
+
+
+
+{% endblock %}
+{% block extrajs %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#b-nice').on('click',function () {
+        $('#nice').removeClass().addClass('glyphicon glyphicon-star-empty')
+    });
+    })
+
+</script>
+{%endblock%}
