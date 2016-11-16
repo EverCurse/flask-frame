@@ -5,12 +5,14 @@ from flask import Flask, render_template, make_response
 from flask import flash
 from jinja2.utils import import_string
 import os
-
+from werkzeug.contrib.cache import SimpleCache
+from flask_cas import CAS
+from flask_restful import Api
+cas_logout_tickets=SimpleCache()
 blueprints = [
     ('app.views.main:main', None),
-    ('app.views.auth.auth:auth', '/auth')
+    ('app.views.auth.auth:auth', '/auth'),
 ]
-
 
 def create_app():
     app = Flask(__name__)
@@ -30,7 +32,11 @@ def load_config(app):
 def load_ext(app):
     from .extensions import db
     from .extensions import login_manager
+    from .extensions import cas
+    from .extensions import api
+    api.init_app(app)
     db.init_app(app)
+    api.init_app(app)
     login_manager.session_protection = 'strong'
     login_manager.login_view='auth.login'
     login_manager.init_app(app)

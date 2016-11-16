@@ -3,7 +3,6 @@
 import os
 from datetime import timedelta
 
-
 class Config():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     FILES_DIR = os.path.join(BASE_DIR, 'files')
@@ -43,6 +42,11 @@ class Dev(Config):
     CAS_TOKEN_VALIDATE_URL = 'http://192.168.90.74:8080/cas/p3/serviceValidate'
     CAS_LOGIN_URL = 'https://192.168.90.74:8443/cas/login'
     CAS_LOGOUT_URL = 'https://192.168.90.74:8443/cas/logout'
+
+    CAS_SERVER = "https://192.168.90.74:8443/cas/login"
+    CAS_AFTER_LOGIN = '/'
+    CAS_LOGOUT_ROUTE = "https://192.168.90.74:8443/cas/logout"
+    CAS_LOGIN_ROUTE = "https://192.168.90.74:8443/cas/login"
     USE_CAS=False
 
 

@@ -1,19 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from datetime import datetime
-
 from flask import Blueprint, render_template, request, current_app, flash, redirect, jsonify
-from flask import url_for
-from flask_login import login_user
+from flask import url_for,session
+from flask_login import login_user,current_user
 from app.extensions import db
 auth = Blueprint('auth', __name__)
 from app.models.models import Users
 from app.views.auth.passwd import check_password, gen_passwd_hash
 from flask_login import login_required, logout_user
 
-
 def cas_login():
-    return 'cas'
+    pass
 
 
 def local_login():
@@ -23,6 +21,7 @@ def local_login():
     if user:
         if user.is_confirm == 1:
             if check_password(user, password):
+                session['is_log']=username
                 login_user(user)
                 user.last_login = datetime.now()
                 db.session.add(user)
@@ -41,11 +40,12 @@ def local_login():
 
 @auth.route('/login/', methods=['POST', 'GET'])
 def login():
-    if request.method == 'GET':
+    if request.method == 'GET' and not current_user.is_authenticated :
         return render_template('auth/login.html')
     else:
         if current_app.config['USE_CAS']:
-            return cas_login()
+            print '================='
+            return local_login()
         else:
             return local_login()
 
@@ -72,5 +72,6 @@ def register():
 @auth.route('/logout/')
 @login_required
 def logout():
+    session.pop('is_log')
     logout_user()
     return redirect(url_for('auth.login'))

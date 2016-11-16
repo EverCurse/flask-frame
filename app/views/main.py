@@ -4,7 +4,7 @@ from flask import Blueprint, render_template
 main = Blueprint('main', __name__)
 from app.models.models import Users
 from flask_login import login_required
-
+from flask_cas import login_required as c_login_required
 
 @main.route('/')
 @login_required
