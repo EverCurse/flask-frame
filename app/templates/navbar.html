@@ -1,38 +1,38 @@
 {% extends 'demo.html' %}
 {% block body %}
-    <nav class = "navbar navbar-default" role = "navigation">
-
-   <div class = "navbar-header">
-      <a class = "navbar-brand" href = "#">TutorialsPoint</a>
-   </div>
-
-   <div>
-      <ul class = "nav navbar-nav">
-         <li class = "active"><a href = "#">iOS</a></li>
-         <li><a href = "#">SVN</a></li>
-
-         <li class = "dropdown">
-            <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
-               Java
-               <b class = "caret"></b>
-            </a>
-
-            <ul class = "dropdown-menu">
-               <li><a href = "#">jmeter</a></li>
-               <li><a href = "#">EJB</a></li>
-               <li><a href = "#">Jasper Report</a></li>
-
-               <li class = "divider"></li>
-               <li><a href = "#">Separated link</a></li>
-
-               <li class = "divider"></li>
-               <li><a href = "#">One more separated link</a></li>
+<div class="container-fluid">
+    <div class="row">
+        <div class="navbar navbar-default" role="navigation">
+          　<div class="navbar-header">
+          　    <a href="##" class="navbar-brand">Zen</a>
+          　</div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="##">首页</a></li>
+                <li><a href="##"></a></li>
+                <li><a href="##">论坛<span class="badge">10</span></a></li>
+                <li><a href="##">反馈</a></li>
             </ul>
 
-         </li>
+            <ul class="nav navbar-nav navbar-right" style="margin-right: 10px;margin-top: 10px">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success"><strong>{{ current_user.username }}</strong></button>
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">权限申请</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
+                </ul>
+                </div>
+            </ul>
 
-      </ul>
-   </div>
-
-</nav>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extrajs %}
+    <script type="text/javascript">
+        $('.dropdown-toggle').dropdown()
+    </script>
 {% endblock %}
