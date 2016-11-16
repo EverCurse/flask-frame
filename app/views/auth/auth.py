@@ -2,13 +2,15 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 from flask import Blueprint, render_template, request, current_app, flash, redirect, jsonify
-from flask import url_for,session
-from flask_login import login_user,current_user
+from flask import url_for, session
+from flask_login import login_user
 from app.extensions import db
-auth = Blueprint('auth', __name__)
 from app.models.models import Users
 from app.views.auth.passwd import check_password, gen_passwd_hash
 from flask_login import login_required, logout_user
+
+auth = Blueprint('auth', __name__)
+
 
 def cas_login():
     pass
@@ -21,12 +23,13 @@ def local_login():
     if user:
         if user.is_confirm == 1:
             if check_password(user, password):
-                session['is_log']=username
+                session['is_log'] = username
                 login_user(user)
                 user.last_login = datetime.now()
                 db.session.add(user)
                 db.session.commit()
-                return redirect(request.args.get('next') or url_for("main.index"))
+                return redirect(request.args.get('next')
+                                or url_for("main.index"))
             else:
                 flash(u'  认证失败')
                 return render_template('auth/login.html')
@@ -40,8 +43,8 @@ def local_login():
 
 @auth.route('/login/', methods=['POST', 'GET'])
 def login():
-    if request.method == 'GET' and not current_user.is_authenticated :
-        return render_template('auth/login.html')
+    if request.method == 'GET' and session.get('is_log', None):
+        return redirect(url_for('main.index'))
     else:
         if current_app.config['USE_CAS']:
             print '================='
@@ -63,7 +66,12 @@ def register():
 
         else:
             password = gen_passwd_hash(password)
-            user = Users(username=username, passwd_hash=password,is_confirm=0,reg_time=datetime.now(),role=0)
+            user = Users(
+                username=username,
+                passwd_hash=password,
+                is_confirm=0,
+                reg_time=datetime.now(),
+                role=0)
             db.session.add(user)
             db.session.commit()
             return jsonify({'code': 200, 'data': '注册成功，请登录'})
