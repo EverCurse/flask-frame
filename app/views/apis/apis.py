@@ -9,4 +9,4 @@ class apiTest(Resource):
         print 'apis a'
         return {'key': 'value'}
 
-api.add_resource(apiTest, '/api')
+api.add_resource(apiTest, '/api/<user_id>')
